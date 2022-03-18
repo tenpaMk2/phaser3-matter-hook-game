@@ -3,12 +3,14 @@ import { Ground } from "../objects/ground";
 import { Hook } from "../objects/hook";
 import { Platform } from "../objects/platform";
 import { Player } from "../objects/player";
+import { Score } from "../objects/score";
 
 export class GameScene extends Phaser.Scene {
   public player: Player;
   public spring: any;
   public platforms: Platform[];
   public platformCategory: number;
+  public score: Score;
 
   constructor() {
     super("GameScene");
@@ -51,6 +53,8 @@ export class GameScene extends Phaser.Scene {
     );
 
     let hook = new Hook(this, this.player.x, this.player.y - 100, 300, -900);
+
+    this.score = new Score(this);
 
     // Colliders
     const category1 = this.matter.world.nextCategory();
@@ -129,6 +133,8 @@ export class GameScene extends Phaser.Scene {
     this.platforms = this.platforms.filter((platform) => !platform.isDead);
 
     this.generateNextPlatformIfNeed();
+
+    this.score.update(-this.player.image.y);
   }
 
   generateNextPlatformIfNeed() {
