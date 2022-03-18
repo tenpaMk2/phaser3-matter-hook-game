@@ -7,7 +7,7 @@ export const GameConfig: Phaser.Types.Core.GameConfig = {
   backgroundColor: "#123333",
   width: 1080 / 2,
   height: 1920 / 2,
-  scene: [GameScene],
+  scene: [MainMenuScene, GameScene],
   input: {
     keyboard: false,
     mouse: true,
