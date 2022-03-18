@@ -1,4 +1,3 @@
-import { Vector } from "matter";
 import * as Phaser from "phaser";
 import { Ground } from "../objects/ground";
 import { Hook } from "../objects/hook";
